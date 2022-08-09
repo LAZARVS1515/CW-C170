@@ -1,0 +1,36 @@
+AFRAME.registerComponent("markerHandler", {
+    init:async function(){
+        this.el.addEventListener("markerFound",()=>{
+            console.log("Marker is found")
+        })
+        this.el.addEventListener("markerLost",()=>{
+            console.log("Marker is lost")
+        })
+    },
+    handleMarkerFound: function(){
+        var buttonDiv=document.getElementById("button-div");
+        buttonDiv.style.display="flex";
+
+        var ratingButton=document.getElementById("rating-button")
+        var orderButton=document.getElementById("order-button")
+        ratingButton.addEventListener("click", function(){
+            swal({
+                icon:"warning",
+                title:"rate dish",
+                text:"Work in progress"
+            });
+        });
+
+        orderButton.addEventListener("click",()=>{
+            swal({
+                icon:"https://imgur.com/4NZ6uLY",
+                title:"Thanks for the order",
+                text:"Your order will arrive soon"
+            })
+        })
+    },
+    handleMarkerLost: function(){
+        var buttonDiv=document.getElementById("button-div");
+        buttonDiv.style.display="none";
+    }
+})
